@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="განთავსების აქტი" controller="Home" action="Index" imageUrl="glyphicon glyphicon-home" description="dashboard">
+    
+    <mvcSiteMapNode title="Tables" controller="Home" action="Tables" imageUrl="fa fa-table" description="">
+      <mvcSiteMapNode title="Simple and Responsive" controller="Home" action="SimpleTables" description="simple and responsive tables"/>
+      <mvcSiteMapNode title="Data Tables" controller="Home" action="DataTables" description="jquery plugin for data management"/>
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+
+</mvcSiteMap>
