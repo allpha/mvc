@@ -3,12 +3,20 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="განთავსების აქტი" controller="Home" action="Index" imageUrl="glyphicon glyphicon-home" description="dashboard">
+  <mvcSiteMapNode title="მყარი ნარჩენები" controller="Home" action="Index" imageUrl="fa fa-pencil-square-o" description="განთავსების აქტი">
     
-    <mvcSiteMapNode title="Tables" controller="Home" action="Tables" imageUrl="fa fa-table" description="">
-      <mvcSiteMapNode title="Simple and Responsive" controller="Home" action="SimpleTables" description="simple and responsive tables"/>
-      <mvcSiteMapNode title="Data Tables" controller="Home" action="DataTables" description="jquery plugin for data management"/>
+    <mvcSiteMapNode title="ცნობარი" controller="Home" action="Index" imageUrl="fa fa-th" description="elements">
+      <mvcSiteMapNode title="ცნობარი 1" controller="Home" action="Index" description="Basics"/>
+      <mvcSiteMapNode title="ცნობარი 2" controller="Home" action="Index" description=""/>
+      <mvcSiteMapNode title="ცნობარი 3" controller="Home" action="Index" description="dragable list items"/>
+      <mvcSiteMapNode title="ცნობარი 4" controller="Home" action="Index" description="Fuel UX's tree"/>
     </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="ადმინისტრირება" controller="Home" action="Index" imageUrl="fa fa-desktop" description="flexible containers">
+      <mvcSiteMapNode title="მომხმარებლები" controller="Home" action="Index" description="Basics"/>
+      <mvcSiteMapNode title="ცნობარი 2" controller="Home" action="Index" description=""/>
+    </mvcSiteMapNode>
+
   </mvcSiteMapNode>
 
 </mvcSiteMap>

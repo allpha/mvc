@@ -23,15 +23,16 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 
     <!--Basic Styles-->
     @Styles.Render("~/css/bootstrap")
-    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-
+    @Styles.Render("~/css/bootstrap-rtl")
 
     <!--Fonts-->
+    <link href="http://fonts.googleapis.com/earlyaccess/droidarabickufi.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300"
           rel="stylesheet" type="text/css">
 
     <!--Beyond styles-->
-    @Styles.Render("~/css/beyond")
+    @Styles.Render("~/css/beyond-rtl")
+    <link href="~/assets/css/beyond-rtl.min.css" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
@@ -42,7 +43,25 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 <body>
     <!-- Loading Container -->
     <div class="loading-container">
-        <div class="loader"></div>
+        <div class="loading-progress">
+            <div class="rotator">
+                <div class="rotator">
+                    <div class="rotator colored">
+                        <div class="rotator">
+                            <div class="rotator colored">
+                                <div class="rotator colored"></div>
+                                <div class="rotator"></div>
+                            </div>
+                            <div class="rotator colored"></div>
+                        </div>
+                        <div class="rotator"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
     </div>
     <!--  /Loading Container -->
     <!-- Navbar -->
@@ -50,10 +69,10 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
         <div class="navbar-inner">
             <div class="navbar-container">
                 <!-- Navbar Barnd -->
-                <div class="navbar-header pull-left">
+                <div class="navbar-header pull-right">
                     <a href="#" class="navbar-brand">
                         <small>
-                            <img src="~/assets/img/logo.png" alt="" />
+                            <img src="~/assets/img/logo-rtl.png" alt="" />
                         </small>
                     </a>
                 </div>
@@ -64,7 +83,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 </div>
                 <!-- /Sidebar Collapse -->
                 <!-- Account Area and Settings --->
-                <div class="navbar-header pull-right">
+                <div class="navbar-header pull-left">
                     <div class="navbar-account">
                         <ul class="account-area">
                             <li>
@@ -80,12 +99,12 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     <i class="fa fa-phone bg-themeprimary white"></i>
                                                 </div>
                                                 <div class="notification-body">
-                                                    <span class="title">Skype meeting with Patty</span>
-                                                    <span class="description">01:00 pm</span>
+                                                    <span class="title">سكايب لقائه مع باتي </span>
+                                                    <span class="description">01:00</span>
                                                 </div>
                                                 <div class="notification-extra">
                                                     <i class="fa fa-clock-o themeprimary"></i>
-                                                    <span class="description">office</span>
+                                                    <span class="description">مكتب</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -97,8 +116,8 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     <i class="fa fa-check bg-darkorange white"></i>
                                                 </div>
                                                 <div class="notification-body">
-                                                    <span class="title">Uncharted break</span>
-                                                    <span class="description">03:30 pm - 05:15 pm</span>
+                                                    <span class="title">استراحة مجهولة </span>
+                                                    <span class="description">15:30 حتي 05:15</span>
                                                 </div>
                                                 <div class="notification-extra">
                                                     <i class="fa fa-clock-o darkorange"></i>
@@ -113,13 +132,13 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     <i class="fa fa-gift bg-warning white"></i>
                                                 </div>
                                                 <div class="notification-body">
-                                                    <span class="title">Kate birthday party</span>
-                                                    <span class="description">08:30 pm</span>
+                                                    <span class="title">كيت حفل عيد ميلاد </span>
+                                                    <span class="description">08:30</span>
                                                 </div>
                                                 <div class="notification-extra">
                                                     <i class="fa fa-calendar warning"></i>
                                                     <i class="fa fa-clock-o warning"></i>
-                                                    <span class="description">at home</span>
+                                                    <span class="description">في المنزل</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -131,18 +150,18 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     <i class="fa fa-glass bg-success white"></i>
                                                 </div>
                                                 <div class="notification-body">
-                                                    <span class="title">Dinner with friends</span>
-                                                    <span class="description">10:30 pm</span>
+                                                    <span class="title">عشاء مع الأصدقاء </span>
+                                                    <span class="description">22:30</span>
                                                 </div>
                                             </div>
                                         </a>
                                     </li>
                                     <li class="dropdown-footer ">
                                         <span>
-                                            Today, March 28
+                                            اليوم، 28 مارس
                                         </span>
-                                        <span class="pull-right">
-                                            10°c
+                                        <span class="pull-left">
+                                            10 درجة مئوية
                                             <i class="wi wi-cloudy"></i>
                                         </span>
                                     </li>
@@ -161,16 +180,16 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                             <img src="~/assets/img/avatars/divyia.jpg" class="message-avatar" alt="Divyia Austin">
                                             <div class="message">
                                                 <span class="message-sender">
-                                                    Divyia Austin
+                                                    دیویا فیلیبس
                                                 </span>
                                                 <span class="message-time">
-                                                    2 minutes ago
+                                                    منذ 2 دقيقة
                                                 </span>
                                                 <span class="message-subject">
-                                                    Here's the recipe for apple pie
+                                                    وإليك وصفة لفطيرة التفاح
                                                 </span>
                                                 <span class="message-body">
-                                                    to identify the sending application when the senders image is shown for the main icon
+                                                    لتعريف التطبيق بإرسال عندما يتم عرض صورة للرمز المرسلين الرئيسي
                                                 </span>
                                             </div>
                                         </a>
@@ -183,7 +202,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     Bing.com
                                                 </span>
                                                 <span class="message-time">
-                                                    Yesterday
+                                                    دیروز
                                                 </span>
                                                 <span class="message-subject">
                                                     Bing Newsletter: The January Issue‏
@@ -199,16 +218,16 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                             <img src="~/assets/img/avatars/adam-jansen.jpg" class="message-avatar" alt="Divyia Austin">
                                             <div class="message">
                                                 <span class="message-sender">
-                                                    Nicolas
+                                                    نيكولا
                                                 </span>
                                                 <span class="message-time">
-                                                    Friday, September 22
+                                                    الجمعة، 22 سبتمبر
                                                 </span>
                                                 <span class="message-subject">
-                                                    New 4K Cameras
+                                                    جديد 4K كاميرات
                                                 </span>
                                                 <span class="message-body">
-                                                    The 4K revolution has come over the horizon and is reaching the general populous
+                                                    لقد حان 4K ثورة في الأفق، والوصول إلى عدد السكان العام.
                                                 </span>
                                             </div>
                                         </a>
@@ -226,14 +245,14 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                 <ul class="pull-right dropdown-menu dropdown-tasks dropdown-arrow ">
                                     <li class="dropdown-header bordered-darkorange">
                                         <i class="fa fa-tasks"></i>
-                                        4 Tasks In Progress
+                                        4 مهام في التقدم
                                     </li>
 
                                     <li>
                                         <a href="#">
                                             <div class="clearfix">
-                                                <span class="pull-left">Account Creation</span>
-                                                <span class="pull-right">65%</span>
+                                                <span class="pull-right">إنشاء حساب </span>
+                                                <span class="pull-left">65%</span>
                                             </div>
 
                                             <div class="progress progress-xs">
@@ -245,8 +264,8 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <li>
                                         <a href="#">
                                             <div class="clearfix">
-                                                <span class="pull-left">Profile Data</span>
-                                                <span class="pull-right">35%</span>
+                                                <span class="pull-right">ملف البيانات </span>
+                                                <span class="pull-left">35%</span>
                                             </div>
 
                                             <div class="progress progress-xs">
@@ -258,8 +277,8 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <li>
                                         <a href="#">
                                             <div class="clearfix">
-                                                <span class="pull-left">Updating Resume</span>
-                                                <span class="pull-right">75%</span>
+                                                <span class="pull-right">تحديث استئناف </span>
+                                                <span class="pull-left">75%</span>
                                             </div>
 
                                             <div class="progress progress-xs">
@@ -271,7 +290,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <li>
                                         <a href="#">
                                             <div class="clearfix">
-                                                <span class="pull-left">Adding Contacts</span>
+                                                <span class="pull-left">مضيفا اتصالات </span>
                                                 <span class="pull-right">10%</span>
                                             </div>
 
@@ -283,15 +302,15 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 
                                     <li class="dropdown-footer">
                                         <a href="#">
-                                            See All Tasks
+                                            رؤية كافة المهام
                                         </a>
-                                        <button class="btn btn-xs btn-default shiny darkorange icon-only pull-right"><i class="fa fa-check"></i></button>
+                                        <button class="btn btn-xs btn-default shiny darkorange icon-only pull-left"><i class="fa fa-check"></i></button>
                                     </li>
                                 </ul>
                                 <!--/Tasks Dropdown-->
                             </li>
                             <li>
-                                <a class="wave in" id="chat-link" title="Chat" href="#">
+                                <a class="wave in" id="chat-link" title="حدیث" href="#">
                                     <i class="icon glyphicon glyphicon-comment"></i>
                                 </a>
                             </li>
@@ -301,24 +320,24 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                         <img src="~/assets/img/avatars/adam-jansen.jpg">
                                     </div>
                                     <section>
-                                        <h2><span class="profile"><span>David Stevenson</span></span></h2>
+                                        <h2><span class="profile"><span>ديفيد ستيفنسون </span></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                    <li class="username"><a>David Stevenson</a></li>
+                                    <li class="username"><a>ديفيد ستيفنسون</a></li>
                                     <li class="email"><a>David.Stevenson@live.com</a></li>
                                     <!--Avatar Area-->
                                     <li>
                                         <div class="avatar-area">
                                             <img src="~/assets/img/avatars/adam-jansen.jpg" class="avatar">
-                                            <span class="caption">Change Photo</span>
+                                            <span class="caption">تغيير الصورة</span>
                                         </div>
                                     </li>
                                     <!--Avatar Area-->
                                     <li class="edit">
-                                        <a href="profile.html" class="pull-left">Profile</a>
-                                        <a href="#" class="pull-right">Setting</a>
+                                        <a href="profile.html" class="pull-left">الملف الشخصي</a>
+                                        <a href="#" class="pull-right">اعداد</a>
                                     </li>
                                     <!--Theme Selector Area-->
                                     <li class="theme-area">
@@ -340,7 +359,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <!--/Theme Selector Area-->
                                     <li class="dropdown-footer">
                                         <a href="login.html">
-                                            Sign out
+                                            تسجيل الخروج
                                         </a>
                                     </li>
                                 </ul>
@@ -357,19 +376,19 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </div><div class="setting-container">
                             <label>
                                 <input type="checkbox" id="checkbox_fixednavbar">
-                                <span class="text">Fixed Navbar</span>
+                                <span class="text">نافبار الثابتة</span>
                             </label>
                             <label>
                                 <input type="checkbox" id="checkbox_fixedsidebar">
-                                <span class="text">Fixed SideBar</span>
+                                <span class="text">الشريط الجانبي ثابت</span>
                             </label>
                             <label>
                                 <input type="checkbox" id="checkbox_fixedbreadcrumbs">
-                                <span class="text">Fixed BreadCrumbs</span>
+                                <span class="text">بردکرامبز الثابتة</span>
                             </label>
                             <label>
                                 <input type="checkbox" id="checkbox_fixedheader">
-                                <span class="text">Fixed Header</span>
+                                <span class="text">رأس ثابتة</span>
                             </label>
                         </div>
                         <!-- Settings -->
@@ -665,21 +684,6 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                     @RenderBody()
                 </div>
                 <!-- /Page Body -->
-                <!-- Page Footer -->
-                <div class="page-footer">
-                    <div class="footer-copyright">
-                        <span class="copyright-symbol">
-                            ©
-                        </span>
-                        2016 beyondthemes
-                    </div>
-                    <div class="footer-buttons">
-                        <a href="#">
-                            <i class="fa fa-external-link"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- /Page Footer -->
             </div>
             <!-- /Page Content -->
         </div>
