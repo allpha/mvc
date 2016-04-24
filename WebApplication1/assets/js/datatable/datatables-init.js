@@ -1,4 +1,4 @@
-var InitiateSimpleDataTable = function() {
+﻿var InitiateSimpleDataTable = function() {
     return {
         init: function() {
             //Datatable Initiating
@@ -340,8 +340,8 @@ var InitiateSearchableDataTable = function() {
                     "search": "",
                     "sLengthMenu": "_MENU_",
                     "oPaginate": {
-                        "sPrevious": "Prev",
-                        "sNext": "Next"
+                        "sPrevious": "უკან",
+                        "sNext": "წინ"
                     }
                 }
             });

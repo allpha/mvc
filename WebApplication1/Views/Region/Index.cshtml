@@ -1,0 +1,125 @@
+﻿@model IEnumerable<App.Data.Entity.Region>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="mail-container" style="margin:-20px;">
+    <div class="mail-header" style="margin: 10px;">
+        <ul class="header-buttons">
+            <li>
+                <a href="/Home/Compose" class="tooltip-primary" data-toggle="tooltip" data-original-title="Compose"><i class="glyphicon glyphicon-pencil"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Options"><i class="fa fa-angle-down"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Reply"><i class="glyphicon glyphicon-repeat"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Forward"><i class="glyphicon glyphicon-share-alt"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Remove"><i class="glyphicon glyphicon-remove"></i></a>
+            </li>
+            <li>
+                <a class="tooltip-primary" data-toggle="tooltip" data-original-title="Important"><i class="fa fa-exclamation"></i></a>
+            </li>
+        </ul>
+        <ul class="header-buttons pull-right">
+            <li>
+                <a><i class="fa fa-angle-left"></i></a>
+            </li>
+            <li>
+                <a><i class="fa fa-angle-right"></i></a>
+            </li>
+            <li class="search">
+                <span class="input-icon">
+                    <input type="text" class="form-control input-sm" id="fontawsome-search">
+                    <i class="glyphicon glyphicon-search lightgray"></i>
+                </span>
+            </li>
+        </ul>
+        <div class="pages">
+            1-100 of 608
+        </div>
+    </div>
+    <div class="mail-body" style="margin: 10px;">
+
+        <div class="flip-scroll">
+            <table class="table table-bordered table-striped table-condensed flip-content">
+                <thead class="flip-content bordered-platinum">
+                    <tr>
+                        <th>
+                            დასახელება
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+@foreach (var item in Model)
+{
+                    <tr>
+                        <td>
+                           @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+
+}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+
+
+
+@section PageScripts{
+
+    <link href="~/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="~/assets/js/datatable/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/datatable/ZeroClipboard.js"></script>
+    <script src="~/assets/js/datatable/dataTables.tableTools.min.js"></script>
+    <script src="~/assets/js/datatable/dataTables.bootstrap.min.js"></script>
+    <script src="~/assets/js/datatable/datatables-init.js"></script>
+    <script>
+        InitiateSearchableDataTable.init();
+    </script>
+
+}

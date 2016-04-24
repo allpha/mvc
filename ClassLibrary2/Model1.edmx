@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GSWC_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="255" />
+          <Property Name="AllowUseEmailAsUsername" Type="bit" Nullable="false" />
+          <Property Name="LastPasswordChangeDate" Type="datetime" />
+          <Property Name="MaxAttamptPassword" Type="int" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="LastLockedDate" Type="datetime" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+          <Property Name="LastDisableDate" Type="datetime" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="ApplicationRoleId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnterDate" Type="datetime" Nullable="false" />
+          <Property Name="WastTypeId" Type="int" Nullable="false" />
+          <Property Name="WastVolume" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="WastWeight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProviderTypeId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="WastCarierId" Type="int" Nullable="false" />
+          <Property Name="TruckNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="ProviderTypeId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProviderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locationId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Serie" Type="varchar" MaxLength="5" />
+          <Property Name="Number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BodyVolume" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="YearOfBuilt" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrivateNumber" Type="varchar" MaxLength="11" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="JobPosition" Type="nvarchar" MaxLength="1024" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WastCarier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WastType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Coeficient" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId">
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="ApplicationRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApplicationUser_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="CreateUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId">
+          <End Role="ProviderType" Type="Self.ProviderType" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="ProviderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_WastCarier_WastCarierId">
+          <End Role="WastCarier" Type="Self.WastCarier" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WastCarier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="WastCarierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_WastType_WastTypeId">
+          <End Role="WastType" Type="Self.WastType" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WastType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="WastTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Location_dbo_Location_ParentId">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Location1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Provider_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Provider_dbo_ProviderType_ProviderTypeId">
+          <End Role="ProviderType" Type="Self.ProviderType" Multiplicity="1" />
+          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="ProviderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Truck_dbo_Location_locationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="locationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserDetail_dbo_ApplicationUser_UserId">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_WastCarier_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="WastCarier" Type="Self.WastCarier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WastCarier">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GSWC_V2ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationRole" EntityType="Self.ApplicationRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderType" EntityType="Self.ProviderType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WastCarier" EntityType="Self.WastCarier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WastType" EntityType="Self.WastType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId" Association="Self.FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId">
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApplicationUser_dbo_Location_LocationId" Association="Self.FK_dbo_ApplicationUser_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId" Association="Self.FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_Location_LocationId" Association="Self.FK_dbo_Ledger_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId" Association="Self.FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId">
+            <End Role="ProviderType" EntitySet="ProviderType" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_WastCarier_WastCarierId" Association="Self.FK_dbo_Ledger_dbo_WastCarier_WastCarierId">
+            <End Role="WastCarier" EntitySet="WastCarier" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_WastType_WastTypeId" Association="Self.FK_dbo_Ledger_dbo_WastType_WastTypeId">
+            <End Role="WastType" EntitySet="WastType" />
+            <End Role="Ledger" EntitySet="Ledger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Location_dbo_Location_ParentId" Association="Self.FK_dbo_Location_dbo_Location_ParentId">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Location1" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Provider_dbo_Location_LocationId" Association="Self.FK_dbo_Provider_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Provider" EntitySet="Provider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Provider_dbo_ProviderType_ProviderTypeId" Association="Self.FK_dbo_Provider_dbo_ProviderType_ProviderTypeId">
+            <End Role="ProviderType" EntitySet="ProviderType" />
+            <End Role="Provider" EntitySet="Provider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Truck_dbo_Location_locationId" Association="Self.FK_dbo_Truck_dbo_Location_locationId">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserDetail_dbo_ApplicationUser_UserId" Association="Self.FK_dbo_UserDetail_dbo_ApplicationUser_UserId">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_WastCarier_dbo_Location_LocationId" Association="Self.FK_dbo_WastCarier_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="WastCarier" EntitySet="WastCarier" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GSWC_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationUsers" Relationship="Self.FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId" FromRole="ApplicationRole" ToRole="ApplicationUser" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AllowUseEmailAsUsername" Type="Boolean" Nullable="false" />
+          <Property Name="LastPasswordChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="MaxAttamptPassword" Type="Int32" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="LastLockedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="LastDisableDate" Type="DateTime" Precision="3" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="ApplicationRoleId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ApplicationRole" Relationship="Self.FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId" FromRole="ApplicationUser" ToRole="ApplicationRole" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_dbo_ApplicationUser_dbo_Location_LocationId" FromRole="ApplicationUser" ToRole="Location" />
+          <NavigationProperty Name="Ledgers" Relationship="Self.FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId" FromRole="ApplicationUser" ToRole="Ledger" />
+          <NavigationProperty Name="UserDetails" Relationship="Self.FK_dbo_UserDetail_dbo_ApplicationUser_UserId" FromRole="ApplicationUser" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnterDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WastTypeId" Type="Int32" Nullable="false" />
+          <Property Name="WastVolume" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="WastWeight" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProviderTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WastCarierId" Type="Int32" Nullable="false" />
+          <Property Name="TruckNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId" FromRole="Ledger" ToRole="ApplicationUser" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_dbo_Ledger_dbo_Location_LocationId" FromRole="Ledger" ToRole="Location" />
+          <NavigationProperty Name="ProviderType" Relationship="Self.FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId" FromRole="Ledger" ToRole="ProviderType" />
+          <NavigationProperty Name="WastCarier" Relationship="Self.FK_dbo_Ledger_dbo_WastCarier_WastCarierId" FromRole="Ledger" ToRole="WastCarier" />
+          <NavigationProperty Name="WastType" Relationship="Self.FK_dbo_Ledger_dbo_WastType_WastTypeId" FromRole="Ledger" ToRole="WastType" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationUsers" Relationship="Self.FK_dbo_ApplicationUser_dbo_Location_LocationId" FromRole="Location" ToRole="ApplicationUser" />
+          <NavigationProperty Name="Ledgers" Relationship="Self.FK_dbo_Ledger_dbo_Location_LocationId" FromRole="Location" ToRole="Ledger" />
+          <NavigationProperty Name="Location1" Relationship="Self.FK_dbo_Location_dbo_Location_ParentId" FromRole="Location" ToRole="Location1" />
+          <NavigationProperty Name="Location2" Relationship="Self.FK_dbo_Location_dbo_Location_ParentId" FromRole="Location1" ToRole="Location" />
+          <NavigationProperty Name="Providers" Relationship="Self.FK_dbo_Provider_dbo_Location_LocationId" FromRole="Location" ToRole="Provider" />
+          <NavigationProperty Name="Trucks" Relationship="Self.FK_dbo_Truck_dbo_Location_locationId" FromRole="Location" ToRole="Truck" />
+          <NavigationProperty Name="WastCariers" Relationship="Self.FK_dbo_WastCarier_dbo_Location_LocationId" FromRole="Location" ToRole="WastCarier" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_dbo_Provider_dbo_Location_LocationId" FromRole="Provider" ToRole="Location" />
+          <NavigationProperty Name="ProviderType" Relationship="Self.FK_dbo_Provider_dbo_ProviderType_ProviderTypeId" FromRole="Provider" ToRole="ProviderType" />
+        </EntityType>
+        <EntityType Name="ProviderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ledgers" Relationship="Self.FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId" FromRole="ProviderType" ToRole="Ledger" />
+          <NavigationProperty Name="Providers" Relationship="Self.FK_dbo_Provider_dbo_ProviderType_ProviderTypeId" FromRole="ProviderType" ToRole="Provider" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locationId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Serie" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BodyVolume" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="YearOfBuilt" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_dbo_Truck_dbo_Location_locationId" FromRole="Truck" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrivateNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="JobPosition" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_dbo_UserDetail_dbo_ApplicationUser_UserId" FromRole="UserDetail" ToRole="ApplicationUser" />
+        </EntityType>
+        <EntityType Name="WastCarier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ledgers" Relationship="Self.FK_dbo_Ledger_dbo_WastCarier_WastCarierId" FromRole="WastCarier" ToRole="Ledger" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_dbo_WastCarier_dbo_Location_LocationId" FromRole="WastCarier" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="WastType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Coeficient" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Ledgers" Relationship="Self.FK_dbo_Ledger_dbo_WastType_WastTypeId" FromRole="WastType" ToRole="Ledger" />
+        </EntityType>
+        <Association Name="FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId">
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="ApplicationRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApplicationUser_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="CreateUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserDetail_dbo_ApplicationUser_UserId">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId">
+          <End Role="ProviderType" Type="Self.ProviderType" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="ProviderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_WastCarier_WastCarierId">
+          <End Role="WastCarier" Type="Self.WastCarier" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WastCarier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="WastCarierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Ledger_dbo_WastType_WastTypeId">
+          <End Role="WastType" Type="Self.WastType" Multiplicity="1" />
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WastType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ledger">
+              <PropertyRef Name="WastTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Location_dbo_Location_ParentId">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Location1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Provider_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Truck_dbo_Location_locationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="locationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_WastCarier_dbo_Location_LocationId">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="WastCarier" Type="Self.WastCarier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WastCarier">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Provider_dbo_ProviderType_ProviderTypeId">
+          <End Role="ProviderType" Type="Self.ProviderType" Multiplicity="1" />
+          <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProviderType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider">
+              <PropertyRef Name="ProviderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GSWC_V2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ApplicationRoles" EntityType="Self.ApplicationRole" />
+          <EntitySet Name="ApplicationUsers" EntityType="Self.ApplicationUser" />
+          <EntitySet Name="Ledgers" EntityType="Self.Ledger" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Providers" EntityType="Self.Provider" />
+          <EntitySet Name="ProviderTypes" EntityType="Self.ProviderType" />
+          <EntitySet Name="Trucks" EntityType="Self.Truck" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <EntitySet Name="WastCariers" EntityType="Self.WastCarier" />
+          <EntitySet Name="WastTypes" EntityType="Self.WastType" />
+          <AssociationSet Name="FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId" Association="Self.FK_dbo_ApplicationUser_dbo_ApplicationRole_ApplicationRoleId">
+            <End Role="ApplicationRole" EntitySet="ApplicationRoles" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApplicationUser_dbo_Location_LocationId" Association="Self.FK_dbo_ApplicationUser_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId" Association="Self.FK_dbo_Ledger_dbo_ApplicationUser_CreateUserId">
+            <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserDetail_dbo_ApplicationUser_UserId" Association="Self.FK_dbo_UserDetail_dbo_ApplicationUser_UserId">
+            <End Role="ApplicationUser" EntitySet="ApplicationUsers" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_Location_LocationId" Association="Self.FK_dbo_Ledger_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId" Association="Self.FK_dbo_Ledger_dbo_ProviderType_ProviderTypeId">
+            <End Role="ProviderType" EntitySet="ProviderTypes" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_WastCarier_WastCarierId" Association="Self.FK_dbo_Ledger_dbo_WastCarier_WastCarierId">
+            <End Role="WastCarier" EntitySet="WastCariers" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Ledger_dbo_WastType_WastTypeId" Association="Self.FK_dbo_Ledger_dbo_WastType_WastTypeId">
+            <End Role="WastType" EntitySet="WastTypes" />
+            <End Role="Ledger" EntitySet="Ledgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Location_dbo_Location_ParentId" Association="Self.FK_dbo_Location_dbo_Location_ParentId">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Location1" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Provider_dbo_Location_LocationId" Association="Self.FK_dbo_Provider_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Provider" EntitySet="Providers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Truck_dbo_Location_locationId" Association="Self.FK_dbo_Truck_dbo_Location_locationId">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Truck" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_WastCarier_dbo_Location_LocationId" Association="Self.FK_dbo_WastCarier_dbo_Location_LocationId">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="WastCarier" EntitySet="WastCariers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Provider_dbo_ProviderType_ProviderTypeId" Association="Self.FK_dbo_Provider_dbo_ProviderType_ProviderTypeId">
+            <End Role="ProviderType" EntitySet="ProviderTypes" />
+            <End Role="Provider" EntitySet="Providers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GSWC_V2ModelStoreContainer" CdmEntityContainer="GSWC_V2Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GSWC_V2Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationRoles">
+            <EntityTypeMapping TypeName="GSWC_V2Model.ApplicationRole">
+              <MappingFragment StoreEntitySet="ApplicationRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUsers">
+            <EntityTypeMapping TypeName="GSWC_V2Model.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="AllowUseEmailAsUsername" ColumnName="AllowUseEmailAsUsername" />
+                <ScalarProperty Name="LastPasswordChangeDate" ColumnName="LastPasswordChangeDate" />
+                <ScalarProperty Name="MaxAttamptPassword" ColumnName="MaxAttamptPassword" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="LastLockedDate" ColumnName="LastLockedDate" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="LastDisableDate" ColumnName="LastDisableDate" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ApplicationRoleId" ColumnName="ApplicationRoleId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ledgers">
+            <EntityTypeMapping TypeName="GSWC_V2Model.Ledger">
+              <MappingFragment StoreEntitySet="Ledger">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EnterDate" ColumnName="EnterDate" />
+                <ScalarProperty Name="WastTypeId" ColumnName="WastTypeId" />
+                <ScalarProperty Name="WastVolume" ColumnName="WastVolume" />
+                <ScalarProperty Name="WastWeight" ColumnName="WastWeight" />
+                <ScalarProperty Name="ProviderTypeId" ColumnName="ProviderTypeId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="WastCarierId" ColumnName="WastCarierId" />
+                <ScalarProperty Name="TruckNumber" ColumnName="TruckNumber" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="GSWC_V2Model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="GSWC_V2Model.Provider">
+              <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProviderTypeId" ColumnName="ProviderTypeId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProviderTypes">
+            <EntityTypeMapping TypeName="GSWC_V2Model.ProviderType">
+              <MappingFragment StoreEntitySet="ProviderType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trucks">
+            <EntityTypeMapping TypeName="GSWC_V2Model.Truck">
+              <MappingFragment StoreEntitySet="Truck">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="BodyVolume" ColumnName="BodyVolume" />
+                <ScalarProperty Name="YearOfBuilt" ColumnName="YearOfBuilt" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="GSWC_V2Model.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PrivateNumber" ColumnName="PrivateNumber" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="JobPosition" ColumnName="JobPosition" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WastCariers">
+            <EntityTypeMapping TypeName="GSWC_V2Model.WastCarier">
+              <MappingFragment StoreEntitySet="WastCarier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WastTypes">
+            <EntityTypeMapping TypeName="GSWC_V2Model.WastType">
+              <MappingFragment StoreEntitySet="WastType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Coeficient" ColumnName="Coeficient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

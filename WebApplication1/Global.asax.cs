@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,11 @@ namespace WebApplication1
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //using (var ctx = new DataContext())
+            //{
+            //    ctx.Database.Initialize(false);
+            //}
         }
     }
 }

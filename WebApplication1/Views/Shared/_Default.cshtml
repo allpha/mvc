@@ -27,18 +27,9 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 
 
     <!--Fonts-->
-    @*<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300"
-        rel="stylesheet" type="text/css">*@
+    <link href="~/assets/css/font1.css" rel="stylesheet" type="text/css">
+    
 
-    <style>
-        @@font-face {
-            font-family: 'avazaregular';
-            src: url('avaza-webfont.eot');
-            src: url('avaza-webfont.eot?#iefix') format('embedded-opentype'), url('avaza-webfont.woff2') format('woff2'), url('avaza-webfont.woff') format('woff'), url('avaza-webfont.ttf') format('truetype'), url('avaza-webfont.svg#avazaregular') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
-    </style>
 
 
     <!--Beyond styles-->
@@ -398,11 +389,11 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
             <!-- Page Sidebar -->
             <div class="page-sidebar" id="sidebar">
                 <!-- Page Sidebar Header-->
-                <div class="sidebar-header-wrapper">
+                @*<div class="sidebar-header-wrapper">
                     <input type="text" class="searchinput" />
                     <i class="searchicon fa fa-search"></i>
                     <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
-                </div>
+                </div>*@
                 <!-- /Page Sidebar Header -->
                 <!-- Sidebar Menu -->
                 @Html.MvcSiteMap().Menu()
@@ -410,7 +401,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
             </div>
             <!-- /Page Sidebar -->
             <!-- Chat Bar -->
-            <div id="chatbar" class="page-chatbar">
+            @*<div id="chatbar" class="page-chatbar">
                 <div class="chatbar-contacts">
                     <div class="contacts-search">
                         <input type="text" class="searchinput" placeholder="Search Contacts" />
@@ -643,14 +634,14 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                         </span>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <!-- /Chat Bar -->
             <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
+                @*<div class="page-breadcrumbs">
                     @Html.MvcSiteMap().SiteMapPath()
-                </div>
+                </div>*@
                 <!-- /Page Breadcrumb -->
                 <!-- Page Header -->
                 <div class="page-header position-relative">
